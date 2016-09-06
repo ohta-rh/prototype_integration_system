@@ -1,16 +1,15 @@
 defmodule PrototypeIntegrationSystem do
-  alias PrototypeIntegrationSystem.Connection
-  alias PrototypeIntegrationSystem.ProcessingJson
+  use Application
 
-  @moduledoc """
-  Facade functions for Integration System
-  """
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
 
-  @doc """
-  Execution main program.
-  """
-  def execute do
-    json = Connection.execute |> ProcessingJson.to_json
+    children = [
+      worker(PrototypeIntegrationSystem.Repo, [])
+    ]
+
+    opts = [strategy: :one_for_one, name: PrototypeIntegrationSystem.Supervisor]
+    Supervisor.start_link(children, opts)
   end
 
 end

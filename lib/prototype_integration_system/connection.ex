@@ -13,7 +13,7 @@ defmodule PrototypeIntegrationSystem.Connection do
     HTTPoison.start
     response = HTTPoison.get! @endpoint
 
-    response
+    response.body
   end
 
   @doc """
@@ -22,6 +22,5 @@ defmodule PrototypeIntegrationSystem.Connection do
   def endpoint do
     @endpoint
   end
-
 end
 

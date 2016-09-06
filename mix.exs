@@ -14,7 +14,7 @@ defmodule PrototypeIntegrationSystem.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :ecto, :mariaex]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,7 +29,9 @@ defmodule PrototypeIntegrationSystem.Mixfile do
   defp deps do
     [{:espec, "~> 1.0.1", only: :test},
      {:httpoison, "~> 0.9.0"},
-     {:poison, "~> 2.0"}
+     {:poison, "~> 2.0"},
+     {:ecto, "~> 1.0"},
+     {:mariaex, "~> 0.1"}
     ]
   end
 end
