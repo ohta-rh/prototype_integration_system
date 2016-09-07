@@ -22,3 +22,38 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
     end
     ```
 
+## Examples
+
+  1. Runner
+
+    ```shell
+    mix run -e "Foo.bar()"
+
+    ```
+
+  2. GET JSON
+
+    ```elixir
+    HTTPoison.start
+    response = HTTPoison.get! [endpoint]
+    response.body
+
+    # Consider Error Handling
+
+    try do
+      HTTPoison.start
+      response = HTTPoison.get! [endpoint]
+      response.body
+    rescue
+      e in RuntimeError -> e
+    end
+    ```
+
+  3. Invoke background shell
+   
+    ```elixir
+    try do
+      System.cmd "path/to/sh", ["/path/to/script"], []
+    rescue
+      #do something
+    end
