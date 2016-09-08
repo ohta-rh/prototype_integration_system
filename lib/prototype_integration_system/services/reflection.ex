@@ -9,8 +9,6 @@ defmodule PrototypeIntegrationSystem.Services.Reflection do
   TODO: Insert only.
   """
   def execute(dict) do
-    Repo.start_link #TODO: what's happen?
-
     changeset = Weather.changeset(%Weather{}, dict)
 
     Repo.insert changeset
