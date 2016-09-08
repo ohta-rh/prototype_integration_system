@@ -7,6 +7,7 @@ defmodule PrototypeIntegrationSystem.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     escript: escript,
      deps: deps()]
   end
 
@@ -14,7 +15,8 @@ defmodule PrototypeIntegrationSystem.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :ecto, :mariaex]]
+    [applications: [:logger, :ecto, :mariaex],
+     mod: {PrototypeIntegrationSystem, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -33,5 +35,9 @@ defmodule PrototypeIntegrationSystem.Mixfile do
      {:ecto, "~> 1.0"},
      {:mariaex, "~> 0.1"}
     ]
+  end
+
+  def escript do
+    [main_module: PrototypeIntegrationSystem]
   end
 end
